@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-function Formulario() {
+function Formulario({ pacientes, setPacientes }) {
 
   const [nombre, setNombre] = useState('');
   const [propietario, setPropietario] = useState('');
@@ -23,7 +23,25 @@ function Formulario() {
 
     setError(false);
 
-    console.log('Enviando formulario');
+    // Objeto de Paciente
+    // ? en typeScript esto podria ser una interface.
+    const objetoPaciente = {
+      nombre, 
+      propietario, 
+      email,
+      fecha,
+      sintomas
+    }
+
+    // Se toma una copia para no reescribir aquello agregado o modificar el arreglo original
+    setPacientes([...pacientes, objetoPaciente]); // arreglo de objetos\
+
+    // Reinicio del form
+    setNombre('');
+    setPropietario('');
+    setEmail('');
+    setFecha('');
+    setSintomas('');
   }
 
   return (
