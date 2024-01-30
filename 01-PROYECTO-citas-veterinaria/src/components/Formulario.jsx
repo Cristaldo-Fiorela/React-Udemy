@@ -50,11 +50,22 @@ function Formulario({ pacientes, setPacientes, paciente }) {
       email,
       fecha,
       sintomas,
-      id: generarId(),
     }
 
-    // Se toma una copia para no reescribir aquello agregado o modificar el arreglo original
-    setPacientes([...pacientes, objetoPaciente]); // arreglo de objetos\
+    if(paciente.id) {
+      // Editando registro 
+      objetoPaciente.id = paciente.id;
+
+      // Actualizando la nueva info.
+      const pacientesActualizados = pacientes.map( pacienteState => pacienteState.id === paciente.id ? objetoPaciente : pacienteState);
+
+      setPacientes(pacientesActualizados);
+    } else {
+      // Nuevo Registro
+      objetoPaciente.id = generarId();
+      // Se toma una copia para no reescribir aquello agregado o modificar el arreglo original
+      setPacientes([...pacientes, objetoPaciente]); // arreglo de objetos\
+    }
 
     // Reinicio del form
     setNombre('');
