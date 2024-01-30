@@ -4,7 +4,9 @@ import Paciente from "./Paciente";
 const ListadoPacientes = ({ pacientes, setPaciente }) => {
 
   useEffect(() => {
-    console.log('Nuevo Paciente');
+    if(pacientes.length > 0) {
+      console.log('Nuevo Paciente');
+    }
   }, [pacientes]);
 
   return (
