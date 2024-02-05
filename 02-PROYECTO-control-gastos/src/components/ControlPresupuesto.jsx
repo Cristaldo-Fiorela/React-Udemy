@@ -1,9 +1,9 @@
 const ControlPresupuesto = ({ presupuesto }) => {
 
   const formatearCantidad = (cantidad) => {
-    return cantidad.toLocaleString('en-US', {
+    return cantidad.toLocaleString('es-AR', {
       style: 'currency',
-      currency: 'USD'
+      currency: 'ARS'
     })
   }
 
