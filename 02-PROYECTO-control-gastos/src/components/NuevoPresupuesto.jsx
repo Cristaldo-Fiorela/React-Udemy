@@ -9,11 +9,15 @@ const NuevoPresupuesto = ({ presupuesto, setPresupuesto }) => {
   const handlePresupuesto = (e) => {
     e.preventDefault();
 
-    if(!Number(presupuesto) || Number(presupuesto) < 0 ) {
+    if(!presupuesto || presupuesto < 0 ) {
       setMensaje('no es un presupuesto valido');
-    } else {
-      console.log('si es un presupuesto valido');
+      return;
     }
+
+    // reseteo de mensaje de error.
+    setMensaje('');
+
+    console.log(presupuesto);
   };
 
   return (
@@ -22,12 +26,12 @@ const NuevoPresupuesto = ({ presupuesto, setPresupuesto }) => {
         <div className="campo">
           <label htmlFor="presupuesto">Definir Presupuesto</label>
           <input 
-            type="text"
+            type="number"
             id="presupuesto"
             className="nuevo-presupuesto"
             placeholder="Añade tu Presupuesto"
             value={presupuesto}
-            onChange={(e) => setPresupuesto(e.target.value)}
+            onChange={(e) => setPresupuesto(Number(e.target.value))}
           />
         </div>
 
