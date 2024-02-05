@@ -18,9 +18,9 @@ function App() {
       />
 
       {isValidPresupuesto && (
-      <div className="nuevo-gasto">
-        <img src={IconoNuevoGasto} alt="icono nuevo gasto" />
-      </div>
+        <div className="nuevo-gasto">
+          <img src={IconoNuevoGasto} alt="icono nuevo gasto" />
+        </div>
       )}
 
     </div>
