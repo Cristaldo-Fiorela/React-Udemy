@@ -1,8 +1,10 @@
 import { useState } from 'react';
 
 import Header from './components/Header';
-import IconoNuevoGasto from './img/nuevo-gasto.svg';
 import Modal from './components/Modal';
+
+import { generarId } from './helpers';
+import IconoNuevoGasto from './img/nuevo-gasto.svg';
 
 function App() {
   
@@ -12,7 +14,7 @@ function App() {
   const [modal, setModal] = useState(false);
   const [animarModal, setAnimarModal] = useState(false);
 
-  const [Gastos, setGastos] = useState([])
+  const [gastos, setGastos] = useState([])
 
   const handleNuevoGasto = () => {
     setModal(true);
@@ -22,8 +24,17 @@ function App() {
     }, 500);
   }
 
-  const guardarGasto = (gasto) => {
-    console.log(gasto);
+  const guardarGasto = (nuevoGasto) => {
+    // agregando id
+    nuevoGasto.id = generarId();
+    // agregando nuevo gasto
+    setGastos([...gastos, nuevoGasto]);
+
+    // cerrando modal
+    setAnimarModal(false);
+    setTimeout(() => {
+      setModal(false);
+    }, 500);
   }
 
   return (
