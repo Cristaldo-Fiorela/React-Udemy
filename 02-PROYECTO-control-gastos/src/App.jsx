@@ -28,6 +28,10 @@ function App() {
   const guardarGasto = (nuevoGasto) => {
     // agregando id
     nuevoGasto.id = generarId();
+
+    //agregando fecha de creacion
+    nuevoGasto.fecha = Date.now();
+
     // agregando nuevo gasto
     setGastos([...gastos, nuevoGasto]);
 
