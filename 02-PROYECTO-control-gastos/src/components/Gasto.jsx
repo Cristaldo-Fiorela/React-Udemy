@@ -27,7 +27,7 @@ const Gasto = ({ gasto }) => {
 
         <img 
           src={diccionarioIconos[categoria]} 
-          alt={"icono gasto" + categoria}
+          alt={"icono gasto " + categoria}
         />
         <div className="descripcion-gasto">
           <p className="categoria">{categoria}</p>
