@@ -1,4 +1,12 @@
 import { formatearFecha } from "../helpers";
+import { 
+  LeadingActions, 
+  SwipeableList, 
+  SwipeableListItem, 
+  SwipeAction, 
+  TrailingActions 
+} from 'react-swipeable-list';
+import 'react-swipeable-list/dist/styles.css';
 
 import IconoAhorro from '../img/icono_ahorro.svg';
 import IconoCasa from '../img/icono_casa.svg';
@@ -21,26 +29,42 @@ const diccionarioIconos = {
 const Gasto = ({ gasto }) => {
 
   const { categoria, nombre, cantidad, id, fecha } = gasto;
+
+  const leadingActions = () => {
+    console.log('Editar...');
+  }
+
+  const trailingActions = () => {
+    console.log('Eliminando...');
+  }
+
   return (
-    <div className="gasto sombra">
-      <div className="contenido-gasto">
+    <SwipeableList>
+      <SwipeableListItem
+        leadingActions={leadingActions}
+        trailingActions={trailingActions}
+      >
+        <div className="gasto sombra">
+          <div className="contenido-gasto">
 
-        <img 
-          src={diccionarioIconos[categoria]} 
-          alt={"icono gasto " + categoria}
-        />
-        <div className="descripcion-gasto">
-          <p className="categoria">{categoria}</p>
-          <p className="nombre-gasto">{nombre}</p>
-          <p className="fecha-gasto">
-            Agregado el: {''}
-            <span>{formatearFecha(fecha)}</span>
-          </p>
+            <img 
+              src={diccionarioIconos[categoria]} 
+              alt={"icono gasto " + categoria}
+            />
+            <div className="descripcion-gasto">
+              <p className="categoria">{categoria}</p>
+              <p className="nombre-gasto">{nombre}</p>
+              <p className="fecha-gasto">
+                Agregado el: {''}
+                <span>{formatearFecha(fecha)}</span>
+              </p>
+            </div>
+          </div>
+
+          <div className="cantidad-gasto">${cantidad}</div>
         </div>
-      </div>
-
-      <div className="cantidad-gasto">${cantidad}</div>
-    </div>
+      </SwipeableListItem>
+    </SwipeableList>
   )
 }
 
