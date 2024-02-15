@@ -85,6 +85,7 @@ function App() {
           animarModal={animarModal}
           setAnimarModal={setAnimarModal}
           guardarGasto={guardarGasto}
+          gastoEditar={gastoEditar}
         />
       }
 
