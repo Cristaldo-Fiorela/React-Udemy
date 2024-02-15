@@ -39,15 +39,22 @@ function App() {
     }, 500);
   }
 
-  const guardarGasto = (nuevoGasto) => {
-    // agregando id
-    nuevoGasto.id = generarId();
+  const guardarGasto = (gasto) => {
+    if(gasto.id) {
+      // actualizar
+      const gastosActualizados = gastos.map(gastoState => gastoState.id === gasto.id ? gasto : gastoState);
+      setGastos(gastosActualizados);
+    } else {
+      // nuevo gasto
+      // agregando id
+      gasto.id = generarId();
 
-    //agregando fecha de creacion
-    nuevoGasto.fecha = Date.now();
+      //agregando fecha de creacion
+      gasto.fecha = Date.now();
 
-    // agregando nuevo gasto
-    setGastos([...gastos, nuevoGasto]);
+      // agregando nuevo gasto
+      setGastos([...gastos, gasto]);
+    }
 
     // cerrando modal
     setAnimarModal(false);
